@@ -1,0 +1,28 @@
+{
+    "name": "link-to-chatconv",
+    "version": "0.0.1",
+    "manifest_version": 3,
+    "description": "メッセージリンクをChatworkコンバーターに送るアクションを追加",
+    "permissions": [
+    ],
+    "host_permissions": [
+        "https://www.chatwork.com/*"
+    ],
+    "action": {
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://www.chatwork.com/*"
+            ],
+            "js": [
+                "content-scripts.js"
+            ],
+            "run_at": "document_start"
+        }
+    ],
+    "background": {
+        "service_worker": "background.js",
+        "type": "module"
+    }
+}
