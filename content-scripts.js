@@ -25,9 +25,19 @@ function contentsSetup() {
                     if (!actionLabel) throw Error("Not found actionLabel")
                     // 独自メニュー構築
                     const label = document.createElement("span")
-                    label.textContent = "コンバータに送る"
+                    label.textContent = "コンバータで変換"
                     const button = document.createElement("button")
                     button.appendChild(label)
+                    button.onclick = () => {
+                        chrome.runtime.sendMessage({
+                            type: 'jumpToChatconv',
+                        })
+                            .then(() => {
+                            })
+                            .catch((err) => {
+                                throw err
+                            })
+                    }
                     const menu = document.createElement("li")
                     menu.appendChild(button)
                     menu.id = MENU_ID

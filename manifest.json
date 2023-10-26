@@ -6,9 +6,9 @@
     "permissions": [
         "activeTab",
         "background",
+        "nativeMessaging",
         "scripting",
         "tabs"
-
     ],
     "host_permissions": [
         "https://www.chatwork.com/*"
