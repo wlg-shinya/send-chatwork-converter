@@ -2,7 +2,7 @@
     "name": "link-to-chatconv",
     "version": "0.0.1",
     "manifest_version": 3,
-    "description": "メッセージリンクをChatworkコンバーターに送るアクションを追加",
+    "description": "ChatworkのメッセージのアクションメニューにChatworkコンバーターにリンクを送るアクションを追加します",
     "permissions": [
         "activeTab",
         "background",
