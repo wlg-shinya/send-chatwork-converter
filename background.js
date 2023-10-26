@@ -1,4 +1,4 @@
-import { CHATCONV_URL } from "./global-settings.js"
+import { SETTING_STORAGE_KEY } from "./global-settings.js"
 const CHATWORK_URL = "https://www.chatwork.com"
 
 // リロード時やURL変更時やブラウザ起動時タブがchatworkだった時に動作する
@@ -38,11 +38,15 @@ function executeContentScripts(tab) {
     }
 }
 
-function onJumpToChatconv(messageLink) {
+async function onJumpToChatconv(messageLink) {
     const url = encodeURIComponent(messageLink)
-    console.log(url)
+    let setting = {}
+    const result = await chrome.storage.sync.get(SETTING_STORAGE_KEY)
+    if (typeof result[SETTING_STORAGE_KEY] !== 'undefined') {
+        setting = result[SETTING_STORAGE_KEY]
+    }
     chrome.tabs.create({
-        url: `${CHATCONV_URL}?message_link=${url}`,
+        url: `${setting.url}?message_link=${url}`,
         active: false,
     })
 }
