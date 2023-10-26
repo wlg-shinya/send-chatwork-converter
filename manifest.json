@@ -4,6 +4,11 @@
     "manifest_version": 3,
     "description": "メッセージリンクをChatworkコンバーターに送るアクションを追加",
     "permissions": [
+        "activeTab",
+        "background",
+        "scripting",
+        "tabs"
+
     ],
     "host_permissions": [
         "https://www.chatwork.com/*"
