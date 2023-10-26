@@ -16,7 +16,7 @@ chrome.tabs.onActivated.addListener((activeInfo) => {
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     switch (message.type) {
         case 'jumpToChatconv':
-            onJumpToChatconv()
+            onJumpToChatconv(message.arg)
             break
         default: break
     }
@@ -38,9 +38,11 @@ function executeContentScripts(tab) {
     }
 }
 
-function onJumpToChatconv() {
+function onJumpToChatconv(messageLink) {
+    const url = encodeURIComponent(messageLink)
+    console.log(url)
     chrome.tabs.create({
-        url: `${CHATCONV_URL}`,
+        url: `${CHATCONV_URL}?message_link=${url}`,
         active: false,
     })
 }

@@ -29,8 +29,11 @@ function contentsSetup() {
                     const button = document.createElement("button")
                     button.appendChild(label)
                     button.onclick = () => {
+                        const messageLink = `https://www.chatwork.com/#!rid${message.getAttribute("data-rid")}-${message.getAttribute("data-mid")}`
+                        console.log(messageLink)
                         chrome.runtime.sendMessage({
                             type: 'jumpToChatconv',
+                            arg: messageLink
                         })
                             .then(() => {
                             })
