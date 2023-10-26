@@ -1,9 +1,9 @@
-MESSAGE_ELEMENT_PATH = "._message"
+MESSAGE_PATH = "._message"
 
 function contentsSetup() {
-    waitForElement(MESSAGE_ELEMENT_PATH, () => {
+    waitForElement(MESSAGE_PATH, () => {
         // メッセージのアクションメニューに独自メニューを追加
-        const messageNodeList = document.querySelectorAll(MESSAGE_ELEMENT_PATH)
+        const messageNodeList = document.querySelectorAll(MESSAGE_PATH)
         for (const message of messageNodeList) {
             // アクションメニューはメッセージの子要素として追加されるのでそれを監視
             new MutationObserver(() => {
