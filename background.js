@@ -1,7 +1,7 @@
 import { SETTING_STORAGE_KEY } from "./global-settings.js"
 const CHATWORK_URL = "https://www.chatwork.com"
 
-// リロード時やURL変更時やブラウザ起動時タブがchatworkだった時に動作する
+// リロード時やURL変更時やブラウザ起動時に動作する
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     executeContentScripts(tab)
 })
