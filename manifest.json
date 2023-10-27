@@ -1,5 +1,5 @@
 {
-    "name": "link-to-chatconv",
+    "name": "Chatowork's messagelink send chatconv",
     "version": "0.0.1",
     "manifest_version": 3,
     "description": "ChatworkのメッセージのアクションメニューにChatworkコンバーターにリンクを送るアクションを追加します",
