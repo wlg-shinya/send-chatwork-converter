@@ -1,4 +1,4 @@
-import { SETTING_STORAGE_KEY } from "./global-settings.js"
+import { CHATCONV_NAME, SETTING_STORAGE_KEY } from "./global-settings.js"
 const CHATWORK_URL = "https://www.chatwork.com"
 
 // リロード時やURL変更時やブラウザ起動時に動作する
@@ -32,7 +32,14 @@ function executeContentScripts(tab) {
         chrome.scripting.executeScript({
             target: { tabId: tab.id },
             func: contentsSetupOnContentScripts,
+            args: [CHATCONV_NAME]
         })
+            .then(() => {
+            })
+            .catch((err) => {
+                throw err
+            })
+
     } catch (error) {
         throw error
     }
@@ -51,7 +58,9 @@ async function onJumpToChatconv(messageLink) {
     })
 }
 
-// *OnContentScripts関数内のコード領域は content-scripts.js であり background.js の情報は直接使えない
-function contentsSetupOnContentScripts() {
-    contentsSetup()
+// *OnContentScripts関数はシリアライズされ content-scripts.js の実行領域でデシリアライズされる
+// background.js の情報は参照できないが、content-scripts.js の情報は参照できる
+// ref. https://developer.chrome.com/docs/extensions/reference/scripting/#type-ScriptInjection
+function contentsSetupOnContentScripts(chatconvName) {
+    contentsSetup(chatconvName)
 }

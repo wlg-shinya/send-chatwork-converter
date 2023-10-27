@@ -1,4 +1,4 @@
-function contentsSetup() {
+function contentsSetup(chatconvName) {
     waitForElement("#_timeLine > div", (messageRoot) => {
         // チャット投稿以下の要素に変化があるか監視
         new MutationObserver(() => {
@@ -21,7 +21,7 @@ function contentsSetup() {
                         if (!actionLabel) throw Error("Not found actionLabel")
                         // 独自メニュー構築
                         const label = document.createElement("span")
-                        label.textContent = "コンバータで変換"
+                        label.textContent = `${chatconvName}に送る`
                         const button = document.createElement("button")
                         button.appendChild(label)
                         button.onclick = () => {
