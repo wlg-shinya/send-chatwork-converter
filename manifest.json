@@ -15,6 +15,11 @@
         "https://www.chatwork.com/*"
     ],
     "action": {
+        "default_icon": {
+            "16": "images/icon16.png",
+            "24": "images/icon24.png",
+            "32": "images/icon32.png"
+        },
         "default_popup": "popup.html"
     },
     "content_scripts": [
