@@ -1,13 +1,12 @@
-import { APP_NAME, SETTING_STORAGE_KEY } from "./global-settings.js"
+import { APP_NAME, CHATCONV_NAME, SETTING_STORAGE_KEY } from "./global-settings.js"
 let setting = {}
 
 main()
 async function main() {
     await initialize()
-    const root = createRoot()
-    contentsUrlSetting(root)
-    root.appendChild(document.createElement("br")) // 直後のコンテンツとつまり過ぎないようにする調整
-    contentsSaveButton(root)
+    const card = createCard()
+    contentsUrlSetting(card.body)
+    contentsSaveButton(card.footer)
 }
 
 async function initialize() {
@@ -41,24 +40,33 @@ function currentSetting() {
     return current
 }
 
-function createRoot() {
+function createCard() {
     const card = document.createElement("div")
     card.classList.add("card")
-    const cardHead = document.createElement("div")
-    cardHead.classList.add("card-header")
-    cardHead.textContent = APP_NAME
-    card.appendChild(cardHead)
+    const cardHeader = document.createElement("div")
+    cardHeader.classList.add("card-header")
+    const icon = document.createElement("img")
+    icon.classList.add("me-1")
+    icon.src = chrome.runtime.getURL('images/icon16.png')
+    cardHeader.appendChild(icon)
+    const title = document.createElement("span")
+    title.textContent = APP_NAME
+    cardHeader.appendChild(title)
+    card.appendChild(cardHeader)
     const cardBody = document.createElement("div")
     cardBody.classList.add("card-body")
     card.appendChild(cardBody)
+    const cardFooter = document.createElement("div")
+    cardBody.classList.add("card-footer")
+    card.appendChild(cardFooter)
     document.body.appendChild(card)
-    return cardBody
+    return {header: cardHeader, body: cardBody, footer: cardFooter}
 }
 
 function contentsUrlSetting(parent) {
     const label = document.createElement("span")
     label.classList.add("fw-bold")
-    label.textContent = "chatworkコンバータのURL"
+    label.textContent = `${CHATCONV_NAME}のURL`
     parent.appendChild(label)
     const input = document.createElement("input")
     input.id = "url"
@@ -69,12 +77,12 @@ function contentsUrlSetting(parent) {
 
 function contentsSaveButton(parent) {
     const div = document.createElement("div")
-    div.classList.add("d-flex")
     const button = document.createElement("button")
     div.appendChild(button)
     button.classList.add("btn")
     button.classList.add("btn-primary")
-    button.classList.add("flex-fill")
+    button.classList.add("offset-4")
+    button.classList.add("col-4")
     button.onclick = save
     button.textContent = "保存"
     parent.appendChild(div)
