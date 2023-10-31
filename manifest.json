@@ -22,17 +22,6 @@
         },
         "default_popup": "popup.html"
     },
-    "content_scripts": [
-        {
-            "matches": [
-                "https://www.chatwork.com/*"
-            ],
-            "js": [
-                "content-scripts.js"
-            ],
-            "run_at": "document_start"
-        }
-    ],
     "background": {
         "service_worker": "background.js",
         "type": "module"

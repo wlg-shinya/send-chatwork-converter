@@ -29,12 +29,22 @@ function executeContentScripts(tab) {
         if (!tab.url?.startsWith(CHATWORK_URL)) return
 
         // コンテンツ構築要求
+        // content-scripts.js は手動で読み込む。manifestに任せていると拡張機能の新規インストール時にすでにタブが開かれている場合に読み込まれないため
         chrome.scripting.executeScript({
             target: { tabId: tab.id },
-            func: contentsSetupOnContentScripts,
-            args: [CHATCONV_NAME]
+            files: ["content-scripts.js"]
         })
             .then(() => {
+                chrome.scripting.executeScript({
+                    target: { tabId: tab.id },
+                    func: contentsSetupOnContentScripts,
+                    args: [CHATCONV_NAME]
+                })
+                    .then(() => {
+                    })
+                    .catch((err) => {
+                        throw err
+                    })
             })
             .catch((err) => {
                 throw err
@@ -58,9 +68,9 @@ async function onJumpToChatconv(messageLink) {
     })
 }
 
-// *OnContentScripts関数はシリアライズされ content-scripts.js の実行領域でデシリアライズされる
-// background.js の情報は参照できないが、content-scripts.js の情報は参照できる
+// *OnContentScripts関数は background.js の情報は参照できない状態で実行される
 // ref. https://developer.chrome.com/docs/extensions/reference/scripting/#type-ScriptInjection
+// その代わりに content-scripts.js の情報はできるように保証して実行している
 function contentsSetupOnContentScripts(chatconvName) {
     contentsSetup(chatconvName)
 }
