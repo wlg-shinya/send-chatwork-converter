@@ -70,7 +70,7 @@ async function onJumpToChatconv(messageLink) {
 
 // *OnContentScripts関数は background.js の情報は参照できない状態で実行される
 // ref. https://developer.chrome.com/docs/extensions/reference/scripting/#type-ScriptInjection
-// その代わりに content-scripts.js の情報はできるように保証して実行している
+// その代わりに content-scripts.js の情報は参照できるように保証している
 function contentsSetupOnContentScripts(chatconvName) {
     contentsSetup(chatconvName)
 }
