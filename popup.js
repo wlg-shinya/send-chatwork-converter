@@ -77,12 +77,14 @@ function contentsUrlSetting(parent) {
 
 function contentsSaveButton(parent) {
   const div = document.createElement("div");
+  div.classList.add("d-flex");
+  div.classList.add("justify-content-center");
   const button = document.createElement("button");
   div.appendChild(button);
   button.classList.add("btn");
   button.classList.add("btn-primary");
-  button.classList.add("offset-4");
   button.classList.add("col-4");
+  button.classList.add("m-2");
   button.onclick = save;
   button.textContent = "保存";
   parent.appendChild(div);
