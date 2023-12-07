@@ -1,6 +1,8 @@
 import { APP_NAME, CHATCONV_NAME, SETTING_STORAGE_KEY } from "./global-settings.js";
 let setting = {};
 
+// TODO: デフォルト設定にChatworkコンバータ正式URLを記載する
+
 main();
 async function main() {
   await initialize();
