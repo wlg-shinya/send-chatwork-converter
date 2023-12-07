@@ -1,45 +1,32 @@
 {
-    "name": "Chatowork's messagelink send chatconv",
-    "version": "0.1.0",
-    "manifest_version": 3,
-    "description": "ChatworkのメッセージのアクションメニューにChatworkコンバーターにリンクを送るアクションを追加します",
-    "permissions": [
-        "activeTab",
-        "background",
-        "nativeMessaging",
-        "scripting",
-        "storage",
-        "tabs"
-    ],
-    "host_permissions": [
-        "https://www.chatwork.com/*"
-    ],
-    "action": {
-        "default_icon": {
-            "16": "images/icon16.png",
-            "24": "images/icon24.png",
-            "32": "images/icon32.png"
-        },
-        "default_popup": "popup.html"
+  "name": "Chatowork's messagelink send chatconv",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "description": "ChatworkのメッセージのアクションメニューにChatworkコンバーターにリンクを送るアクションを追加します",
+  "permissions": ["activeTab", "background", "nativeMessaging", "scripting", "storage", "tabs"],
+  "host_permissions": ["https://www.chatwork.com/*"],
+  "action": {
+    "default_icon": {
+      "16": "images/icon16.png",
+      "24": "images/icon24.png",
+      "32": "images/icon32.png"
     },
-    "background": {
-        "service_worker": "background.js",
-        "type": "module"
-    },
-    "web_accessible_resources": [
-        {
-            "resources": [
-                "images/icon16.png"
-            ],
-            "matches": [
-                "<all_urls>"
-            ]
-        }
-    ],
-    "icons": {
-        "16": "images/icon16.png",
-        "32": "images/icon32.png",
-        "48": "images/icon48.png",
-        "128": "images/icon128.png"
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["images/icon16.png"],
+      "matches": ["<all_urls>"]
     }
+  ],
+  "icons": {
+    "16": "images/icon16.png",
+    "32": "images/icon32.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  }
 }
