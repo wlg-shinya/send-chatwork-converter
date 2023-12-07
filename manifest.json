@@ -1,6 +1,6 @@
 {
   "name": "Chatowork's messagelink send chatconv",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "manifest_version": 3,
   "description": "ChatworkのメッセージのアクションメニューにChatworkコンバーターにリンクを送るアクションを追加します",
   "permissions": ["activeTab", "background", "nativeMessaging", "scripting", "storage", "tabs"],
