@@ -1,4 +1,4 @@
-import { CHATCONV_NAME, SETTING_STORAGE_KEY } from "./global-settings.js";
+import { CONVERTER_NAME, SETTING_STORAGE_KEY } from "./global-settings.js";
 const CHATWORK_URL = "https://www.chatwork.com";
 
 // リロード時やURL変更時やブラウザ起動時に動作する
@@ -40,7 +40,7 @@ function executeContentScripts(tab) {
           .executeScript({
             target: { tabId: tab.id },
             func: contentsSetupOnContentScripts,
-            args: [CHATCONV_NAME],
+            args: [CONVERTER_NAME],
           })
           .then(() => {})
           .catch((err) => {

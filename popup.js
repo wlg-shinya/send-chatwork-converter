@@ -1,4 +1,4 @@
-import { APP_NAME, CHATCONV_NAME, SETTING_STORAGE_KEY } from "./global-settings.js";
+import { APP_NAME, CONVERTER_NAME, SETTING_STORAGE_KEY } from "./global-settings.js";
 let setting = {};
 
 // TODO: デフォルト設定にChatworkコンバータ正式URLを記載する
@@ -68,7 +68,7 @@ function createCard() {
 function contentsUrlSetting(parent) {
   const label = document.createElement("span");
   label.classList.add("fw-bold");
-  label.textContent = `${CHATCONV_NAME}のURL`;
+  label.textContent = `${CONVERTER_NAME}のURL`;
   parent.appendChild(label);
   const input = document.createElement("input");
   input.id = "url";

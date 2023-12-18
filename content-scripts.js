@@ -5,7 +5,7 @@ function contentsSetup(chatconvName) {
       // アクションメニューが見つかるまで待つ
       waitForElement(".messageActionNav", (messageActionNav) => {
         // 独自メニューの構築と追加
-        const MENU_ID = "link-to-chatconv";
+        const MENU_ID = "send-chatwork-converter";
         if (!messageActionNav.querySelector(`#${MENU_ID}`)) {
           // 構築済みなら何もしない
           try {
